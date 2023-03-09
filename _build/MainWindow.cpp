@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     int score = 0 ;
     bool colidedAxe = false;
     
-    SetTargetFPS(60);
+    SetTargetFPS(30);
     while (!WindowShouldClose())
     {
         counter += 1;
@@ -38,11 +38,12 @@ int main(int argc, char* argv[])
             rectangleBlue.updateHitbox();
             rectangleGreen.updateHitbox();
             rectangleYellow.updateHitbox();
+            rectangleRed.updateHitbox();
 
-            colidedAxe = rectangleBlue.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) || 
-            rectangleYellow.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
-            rectangleGreen.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
-            rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ;
+            colidedAxe = rectangleBlue.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) || 
+            rectangleYellow.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ||
+            rectangleGreen.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ||
+            rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ;
             
             
             DrawCircle(centerX, centerY, radius, RED);
@@ -54,9 +55,15 @@ int main(int argc, char* argv[])
             rectangleRed.createRectangle();
             //rectangleGreen.move(false);
             rectangleGreen.randomMove();
-            rectangleYellow.move(false);
-            rectangleBlue.move(true);
-            rectangleRed.move(false);
+            rectangleYellow.randomMove();
+            rectangleBlue.randomMove();
+            rectangleRed.randomMove();
+            //rectangleYellow.move(false);
+            //rectangleBlue.move(true);
+            //rectangleRed.move(false);
+            //rectangleGreen.detectCollisionRectangle(rectangleBlue);
+            //rectangleGreen.detectCollisionRectangle(rectangleRed);
+            //rectangleGreen.detectCollisionRectangle(rectangleYellow);
             
             
 
@@ -69,21 +76,21 @@ int main(int argc, char* argv[])
 
             }
 
-            if (score >= 500)
-            {
-                rectanglePurple.createRectangle();
-                rectanglePurple.move(true);
-                rectanglePurple.updateHitbox();
-
-                colidedAxe = rectangleBlue.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) || 
-                             rectangleYellow.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
-                             rectangleGreen.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
-                             rectanglePurple.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
-                             rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe);
-            }
+            // if (score >= 500)
+            // {
+            //     rectanglePurple.createRectangle();
+            //     rectanglePurple.move(true);
+            //     rectanglePurple.updateHitbox();
+            //
+            //     colidedAxe = rectangleBlue.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) || 
+            //                  rectangleYellow.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
+            //                  rectangleGreen.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
+            //                  rectanglePurple.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe) ||
+            //                  rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY,colidedAxe);
+            // }
  
 
-
+            
             
             /*
              * Deplacement vers la droite de 10 pixels

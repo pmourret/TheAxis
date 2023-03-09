@@ -14,8 +14,8 @@ public:
     void createRectangle();
     int randomShape(int counter, int side, int limitMin, int limitMax);
     void updateHitbox();
-    bool detectCollision(int leftCircleEdgeX, int rightCicrleEdgeX, int upperCircleEdgeY, int bottomCircleEdgeY, bool colidedAxe);
-    bool detectCollisionRectangle(ObstacleRect obstacleRect) ;
+    bool detectCollision(int leftCircleEdgeX, int rightCicrleEdgeX, int upperCircleEdgeY, int bottomCircleEdgeY);
+    void detectCollisionRectangle(ObstacleRect obstacleRect) ;
     // Getters
     int getRectHeight();
     int getRectWidth();

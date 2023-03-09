@@ -87,21 +87,19 @@ int ObstacleRect::randomShape(int counter, int side, int limitMin, int limitMax)
         {
             int randomSize = GetRandomValue(limitMin, limitMax);
             this->set_rect_width(randomSize);
-            printf("Counter (method case w) %d \n", counter);
             return counter  = 0;
         }
     case 1:
         {
             int randomSize = GetRandomValue(limitMin, limitMax);
             this->set_rect_heigth(randomSize);
-            printf("Counter (method case h) %d \n", counter);
             return counter  = 0;
         }
     }
     
 }
 
-bool ObstacleRect::detectCollision(int leftCircleEdgeX, int rightCicrleEdgeX, int upperCircleEdgeY, int bottomCircleEdgeY, bool colidedAxe)
+bool ObstacleRect::detectCollision(int leftCircleEdgeX, int rightCicrleEdgeX, int upperCircleEdgeY, int bottomCircleEdgeY)
 {
     if (this->getBottomAxeY() >= upperCircleEdgeY &&
         this->getUpperAxeY() <= bottomCircleEdgeY &&
@@ -138,18 +136,17 @@ void ObstacleRect::randomMove()
     }
 }
 
-bool ObstacleRect::detectCollisionRectangle(ObstacleRect obstacleRect)
+void ObstacleRect::detectCollisionRectangle(ObstacleRect obstacleRect)
 {
-    if (this->getBottomAxeY() >= obstacleRect.getUpperAxeY() &&
-    this->getUpperAxeY() <= obstacleRect.getBottomAxeY() &&
-    this->getRightAxeX() >= obstacleRect.getLeftAxeX() &&
-    this->getLeftAxeX() <= obstacleRect.getRightAxeX())
+    this->rectPox += this->travelX ;
+    this->rectPoy += this->travelY ;
+    if (this->getBottomAxeY() == obstacleRect.getUpperAxeY() ||
+    this->getUpperAxeY() == obstacleRect.getBottomAxeY() ||
+    this->getRightAxeX() == obstacleRect.getLeftAxeX() ||
+    this->getLeftAxeX() == obstacleRect.getRightAxeX())
     {
-        return true;
-    }
-    else
-    {
-        return false;
+        this->travelX = -this->travelX ;
+        this->travelY = -this->travelY ;
     }
 }
 
