@@ -41,11 +41,13 @@ int main(int argc, char* argv[])
             rectangleGreen.updateHitbox();
             rectangleYellow.updateHitbox();
             rectangleRed.updateHitbox();
+            rectanglePurple.updateHitbox();
 
             colidedAxe = rectangleBlue.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) || 
             rectangleYellow.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ||
             rectangleGreen.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ||
-            rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ;
+            rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ||
+            rectanglePurple.detectCollision(leftEdgeX, rightEdgeX, upperEdgeY, bottomEdgeY);
             
             
 
@@ -54,6 +56,7 @@ int main(int argc, char* argv[])
             rectangleYellow.createRectangle();
             rectangleBlue.createRectangle();
             rectangleRed.createRectangle();
+            rectanglePurple.createRectangle();
             //rectangleGreen.move(false);
             //rectangleGreen.randomMove();
             //rectangleYellow.randomMove();
@@ -65,19 +68,27 @@ int main(int argc, char* argv[])
             rectangleGreen.detectCollisionRectangle(rectangleBlue);
             rectangleGreen.detectCollisionRectangle(rectangleRed);
             rectangleGreen.detectCollisionRectangle(rectangleYellow);
+            rectangleGreen.detectCollisionRectangle(rectanglePurple);
 
             rectangleBlue.detectCollisionRectangle(rectangleGreen);
             rectangleBlue.detectCollisionRectangle(rectangleRed);
             rectangleBlue.detectCollisionRectangle(rectangleYellow);
+            rectangleBlue.detectCollisionRectangle(rectanglePurple);
 
             rectangleRed.detectCollisionRectangle(rectangleBlue);
             rectangleRed.detectCollisionRectangle(rectangleGreen);
             rectangleRed.detectCollisionRectangle(rectangleYellow);
+            rectangleRed.detectCollisionRectangle(rectanglePurple);
 
             rectangleYellow.detectCollisionRectangle(rectangleBlue);
             rectangleYellow.detectCollisionRectangle(rectangleGreen);
             rectangleYellow.detectCollisionRectangle(rectangleRed);
-            
+            rectangleYellow.detectCollisionRectangle(rectanglePurple);
+
+            rectanglePurple.detectCollisionRectangle(rectangleBlue);
+            rectanglePurple.detectCollisionRectangle(rectangleRed);
+            rectanglePurple.detectCollisionRectangle(rectangleYellow);
+            rectanglePurple.detectCollisionRectangle(rectangleGreen);
             
 
             // if(counter >= 120)
@@ -108,19 +119,19 @@ int main(int argc, char* argv[])
             /*
              * Deplacement vers la droite de 10 pixels
              */
-            if(IsKeyDown(KEY_D) && centerX < (GetScreenWidth() - radius)){centerX = centerX + 10;}
+            if(IsKeyDown(KEY_D) && centerX < (GetScreenWidth() - radius)){centerX = centerX + circleSpeed;}
             /*
              * Deplacement vers la gauche de 10 pixels
              */
-            if (IsKeyDown(KEY_A) && centerX > 0 + radius){centerX = centerX - 10;}
+            if (IsKeyDown(KEY_A) && centerX > 0 + radius){centerX = centerX - circleSpeed;}
             /*
              * Deplacement vers le haut de 10 pixels
              */
-            if (IsKeyDown(KEY_W) && centerY > 0 + radius){centerY = centerY - 10;}
+            if (IsKeyDown(KEY_W) && centerY > 0 + radius){centerY = centerY - circleSpeed;}
             /*
              * Deplacement vers le bas de 10 pixels 
              */
-            if (IsKeyDown(KEY_S) && centerY < (GetScreenHeight() - radius)){centerY = centerY + 10 ;}
+            if (IsKeyDown(KEY_S) && centerY < (GetScreenHeight() - radius)){centerY = centerY + circleSpeed ;}
             /*
              * Agrandissement du rayon de 2 pixels
              */
@@ -136,8 +147,8 @@ int main(int argc, char* argv[])
                 && centerY > 0
                 && centerX > 0)
             {
-                centerY = centerY - 7;
-                centerX = centerX + 7;
+                centerY = centerY - circleSpeed;
+                centerX = centerX + circleSpeed;
             }
             /*
              * Deplacement sur la diagonale gauche de 5 pixels
@@ -146,8 +157,8 @@ int main(int argc, char* argv[])
                 && centerX > 0
                 && centerY > 0)
             {
-                centerX = centerX - 7;
-                centerY = centerY - 7;
+                centerX = centerX - circleSpeed;
+                centerY = centerY - circleSpeed;
             }
         }
 
