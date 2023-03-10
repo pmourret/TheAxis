@@ -138,16 +138,42 @@ void ObstacleRect::randomMove()
 
 void ObstacleRect::detectCollisionRectangle(ObstacleRect obstacleRect)
 {
+    // this->rectPox += this->travelX ;
+    // this->rectPoy += this->travelY ;
+    // if (this->getBottomAxeY() == obstacleRect.getUpperAxeY() ||
+    // this->getUpperAxeY() == obstacleRect.getBottomAxeY() ||
+    // this->getRightAxeX() == obstacleRect.getLeftAxeX() ||
+    // this->getLeftAxeX() == obstacleRect.getRightAxeX())
+    // {
+    //     this->travelX = -this->travelX ;
+    //     this->travelY = -this->travelY ;
+    // }
     this->rectPox += this->travelX ;
     this->rectPoy += this->travelY ;
-    if (this->getBottomAxeY() == obstacleRect.getUpperAxeY() ||
-    this->getUpperAxeY() == obstacleRect.getBottomAxeY() ||
-    this->getRightAxeX() == obstacleRect.getLeftAxeX() ||
-    this->getLeftAxeX() == obstacleRect.getRightAxeX())
+    if(this->rectPox + this->rectWidth + this->travelX > obstacleRect.rectPox &&
+        this->rectPox + this->travelX < obstacleRect.rectPox + obstacleRect.rectWidth &&
+        this->rectPoy + this->rectHeight > obstacleRect.rectPoy &&
+        this->rectPoy < obstacleRect.rectPoy + obstacleRect.rectHeight)
     {
-        this->travelX = -this->travelX ;
-        this->travelY = -this->travelY ;
+        this->travelX = -this->travelX;
     }
+    else if (this->rectPox < 0 || this->rectPox + this->rectWidth > GetScreenWidth())
+    {
+        this->travelX = -this->travelX;
+    }
+
+    if (this->rectPox + this->rectWidth > obstacleRect.rectPox &&
+        this->rectPox < obstacleRect.rectPox + obstacleRect.rectWidth &&
+        this->rectPoy + this->rectHeight + this->travelY > obstacleRect.travelY &&
+        this->rectPoy + this->travelY < obstacleRect.rectPoy + obstacleRect.rectHeight)
+    {
+        this->travelY = -this->travelY;
+    }else if (this->rectPoy < 0 || this->rectPoy + this->rectHeight > GetScreenHeight())
+    {
+        this->travelY = -this->travelY;
+    }
+
+    
 }
 
 

@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     int score = 0 ;
     bool colidedAxe = false;
     
-    SetTargetFPS(30);
+    SetTargetFPS(60);
     while (!WindowShouldClose())
     {
         counter += 1;
@@ -27,6 +27,8 @@ int main(int argc, char* argv[])
         }
         else
         {
+            DrawCircle(centerX, centerY, radius, RED);
+
             score += 1;
             DrawText(TextFormat("Score : %d", score), 10,10,20,RED);
             leftEdgeX = centerX - radius;
@@ -46,7 +48,6 @@ int main(int argc, char* argv[])
             rectangleRed.detectCollision(leftEdgeX,rightEdgeX,upperEdgeY,bottomEdgeY) ;
             
             
-            DrawCircle(centerX, centerY, radius, RED);
 
 
             rectangleGreen.createRectangle();
@@ -54,27 +55,39 @@ int main(int argc, char* argv[])
             rectangleBlue.createRectangle();
             rectangleRed.createRectangle();
             //rectangleGreen.move(false);
-            rectangleGreen.randomMove();
-            rectangleYellow.randomMove();
-            rectangleBlue.randomMove();
-            rectangleRed.randomMove();
+            //rectangleGreen.randomMove();
+            //rectangleYellow.randomMove();
+            //rectangleBlue.randomMove();
+            //rectangleRed.randomMove();
             //rectangleYellow.move(false);
             //rectangleBlue.move(true);
             //rectangleRed.move(false);
-            //rectangleGreen.detectCollisionRectangle(rectangleBlue);
-            //rectangleGreen.detectCollisionRectangle(rectangleRed);
-            //rectangleGreen.detectCollisionRectangle(rectangleYellow);
+            rectangleGreen.detectCollisionRectangle(rectangleBlue);
+            rectangleGreen.detectCollisionRectangle(rectangleRed);
+            rectangleGreen.detectCollisionRectangle(rectangleYellow);
+
+            rectangleBlue.detectCollisionRectangle(rectangleGreen);
+            rectangleBlue.detectCollisionRectangle(rectangleRed);
+            rectangleBlue.detectCollisionRectangle(rectangleYellow);
+
+            rectangleRed.detectCollisionRectangle(rectangleBlue);
+            rectangleRed.detectCollisionRectangle(rectangleGreen);
+            rectangleRed.detectCollisionRectangle(rectangleYellow);
+
+            rectangleYellow.detectCollisionRectangle(rectangleBlue);
+            rectangleYellow.detectCollisionRectangle(rectangleGreen);
+            rectangleYellow.detectCollisionRectangle(rectangleRed);
             
             
 
-            if(counter >= 120)
-            {
-                counter = rectangleGreen.randomShape(counter, 0,100, 300);
-                counter = rectangleBlue.randomShape(counter, 1,60, 300);
-                counter = rectangleYellow.randomShape(counter, 0, 100,250);
-                counter = rectanglePurple.randomShape(counter,0,300,550);
-
-            }
+            // if(counter >= 120)
+            // {
+            //     counter = rectangleGreen.randomShape(counter, 0,100, 300);
+            //     counter = rectangleBlue.randomShape(counter, 1,60, 300);
+            //     counter = rectangleYellow.randomShape(counter, 0, 100,250);
+            //     counter = rectanglePurple.randomShape(counter,0,300,550);
+            //
+            // }
 
             // if (score >= 500)
             // {

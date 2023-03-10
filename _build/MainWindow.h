@@ -23,9 +23,9 @@ int rectPox = (GetScreenWidth() / 2) - rectWidth ;
 int rectPoy = 200;
 int direction = 10;
 
-ObstacleRect rectangleGreen(20, 60, 1050, 350, 10,10,10, GREEN);
-ObstacleRect rectangleYellow(350, 20, 850, 650, 10,10,10, YELLOW);
-ObstacleRect rectangleBlue(60,60,299, 399,10,10,10,BLUE);
-ObstacleRect rectangleRed(800,100,175,1000,5,10,10,RED);
-ObstacleRect rectanglePurple(120,120,1250,269,30,10,10,PURPLE);
+ObstacleRect rectangleGreen(20, 60, 1050, 350, 10,5,5, GREEN);
+ObstacleRect rectangleYellow(350, 20, 850, 650, 10,5,5, YELLOW);
+ObstacleRect rectangleBlue(60,60,299, 399,10,5,5,BLUE);
+ObstacleRect rectangleRed(200,100,175,386,5,5,5,RED);
+ObstacleRect rectanglePurple(120,120,1250,269,30,5,5,PURPLE);
 int counter = 0;
